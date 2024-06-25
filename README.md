@@ -1,23 +1,30 @@
+# Pokemon Search App
 
-Pokémon Search App
 Welcome to the Pokémon Search App! This application allows users to search for Pokémon using various filters and view detailed information about each Pokémon. Below is a guide to help you set up and use the app.
 
-Table of Contents
-Features
-Requirements
-Installation
-Usage
-API Documentation
-Folder Structure
-Contributing
-License
-Features
+##Table of Contents
+  Features
+  Requirements
+  Installation
+  Usage
+  API Documentation
+  Folder Structure
+  Contributing
+  License
+  
+###Features
 Pokémon Search Form: A form with two fields - a select box for Pokémon types and an input box for search terms.
+
 Pokémon List Display: Display a list of Pokémon cards based on the search criteria.
+
 Filter Pokémon: Filter the Pokémon list using the type and search term.
+
 Pokémon Details Page: Redirect to a detailed page for each Pokémon when a Pokémon card is clicked.
+
 Breadcrumb Navigation: Show the URL path on the Pokémon details page.
+
 Responsive Design: The app is responsive and optimized for mobile view.
+
 Requirements
 Node.js (v12 or higher)
 npm (v6 or higher) or yarn (v1.22 or higher)
