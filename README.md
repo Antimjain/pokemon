@@ -3,7 +3,7 @@
 Welcome to the Pokémon Search App! This application allows users to search for Pokémon using various filters and view detailed information about each Pokémon. Below is a guide to help you set up and use the app.
 
 ## Table of Contents
-  Features
+  #### Features
   Requirements
   Installation
   Usage
