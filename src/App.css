@@ -1,0 +1,68 @@
+#root {
+  /* background-color: #52525b; */
+  background-color: #D3D3D3;
+
+  color: white !important;
+  font-family: "Courier New", Courier, monospace;
+}
+
+.navbar {
+  padding: 20px 0 20px 0 !important;
+  font-size: 10px !important;
+}
+
+.navbar-brand {
+  font-size: 30px !important;
+}
+
+.card {
+  background-color: white !important;
+  width: 100%;
+  text-align: center;
+  padding-top: 10px;
+  color: white;
+}
+
+.pokemon-name {
+  font-size: 35px !important;
+  color: black;
+  font-weight: bold;
+}
+
+
+.pokemon-detail {
+  font-size: 15px !important;
+  color: black;
+}
+
+.img-container {
+  background-color: #77DDDD;
+  width: 267px !important;
+}
+
+.pokemon-main-name {
+  font-size: 35px;
+}
+
+.type-text,
+.abilities-text {
+  /* font-size: 30px; */
+  font-size: 15px;
+  font-weight: bold;
+  color: black;
+}
+
+.name-text {
+  font-size: 15px;
+  font-weight: bold;
+  color: black;
+}
+
+.pokemon-list,
+.pokemon-details {
+  font-size: 55px;
+}
+
+.pokemon-details-container {
+  height: 100%;
+}
