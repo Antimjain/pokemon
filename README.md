@@ -9,9 +9,6 @@ Welcome to the Pokémon Search App! This application allows users to search for 
 - [Installation](#installation)
 - [Usage](#usage)
 - [API Documentation](#api-documentation)
-- [Folder Structure](#folder-structure)
-- [Contributing](#contributing)
-- [License](#license)
 
 ## Features
 
@@ -33,3 +30,45 @@ Welcome to the Pokémon Search App! This application allows users to search for 
    ```sh
    git clone https://github.com/your-username/pokemon-search-app.git
    cd pokemon-search-app
+
+2. **Install Dependencies**:
+   ```sh
+   npm install
+   # or
+   yarn install
+
+3. **Start the development server **:
+   ```sh
+   npm start
+   # or
+   yarn start
+
+
+## Usage
+Home Page: The home page contains a form with a select box for Pokémon types and an input box for the search term.
+
+Select Box: Choose a Pokémon type to filter the list.
+Input Box: Enter a search term to filter the list.
+Pokémon List: A list of Pokémon cards is displayed below the form. The list updates based on the selected type and search term.
+
+Pokémon Details: Click on a Pokémon card to navigate to the details page of the Pokémon. This page shows detailed information about the selected Pokémon.
+
+Breadcrumb Navigation: The details page includes a breadcrumb to show the navigation path (e.g., Home -> Pikachu).
+
+
+
+### API Documentation
+The app uses the PokéAPI to fetch data about Pokémon. Here are some of the key endpoints used:
+
+Get All Pokémon Types:
+GET /api/v2/type/
+
+Get Pokémon by Type:
+GET /api/v2/type/{id or name}
+
+Search Pokémon by Name:
+GET /api/v2/pokemon/{id or name}
+
+Get Pokémon Details:
+GET /api/v2/pokemon/{id or name}
+
