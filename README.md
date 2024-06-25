@@ -1,70 +1,117 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Pokémon Search App
+Welcome to the Pokémon Search App! This application allows users to search for Pokémon using various filters and view detailed information about each Pokémon. Below is a guide to help you set up and use the app.
 
-## Available Scripts
+Table of Contents
+Features
+Requirements
+Installation
+Usage
+API Documentation
+Folder Structure
+Contributing
+License
+Features
+Pokémon Search Form: A form with two fields - a select box for Pokémon types and an input box for search terms.
+Pokémon List Display: Display a list of Pokémon cards based on the search criteria.
+Filter Pokémon: Filter the Pokémon list using the type and search term.
+Pokémon Details Page: Redirect to a detailed page for each Pokémon when a Pokémon card is clicked.
+Breadcrumb Navigation: Show the URL path on the Pokémon details page.
+Responsive Design: The app is responsive and optimized for mobile view.
+Requirements
+Node.js (v12 or higher)
+npm (v6 or higher) or yarn (v1.22 or higher)
+Installation
+Clone the Repository:
 
-In the project directory, you can run:
+sh
+Copy code
+git clone https://github.com/your-username/pokemon-search-app.git
+cd pokemon-search-app
+Install Dependencies:
 
-### `npm start`
+sh
+Copy code
+npm install
+# or
+yarn install
+Start the Development Server:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+sh
+Copy code
+npm start
+# or
+yarn start
+Usage
+Home Page: The home page contains a form with a select box for Pokémon types and an input box for the search term.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Select Box: Choose a Pokémon type to filter the list.
+Input Box: Enter a search term to filter the list.
+Pokémon List: A list of Pokémon cards is displayed below the form. The list updates based on the selected type and search term.
 
-### `npm test`
+Pokémon Details: Click on a Pokémon card to navigate to the details page of the Pokémon. This page shows detailed information about the selected Pokémon.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Breadcrumb Navigation: The details page includes a breadcrumb to show the navigation path (e.g., Home -> Pikachu).
 
-### `npm run build`
+API Documentation
+The app uses the PokéAPI to fetch data about Pokémon. Here are some of the key endpoints used:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Get All Pokémon Types:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+bash
+Copy code
+GET /api/v2/type/
+Get Pokémon by Type:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+bash
+Copy code
+GET /api/v2/type/{id or name}
+Search Pokémon by Name:
 
-### `npm run eject`
+bash
+Copy code
+GET /api/v2/pokemon/{id or name}
+Get Pokémon Details:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+bash
+Copy code
+GET /api/v2/pokemon/{id or name}
+Folder Structure
+java
+Copy code
+pokemon-search-app/
+├── public/
+│   ├── index.html
+│   └── ...
+├── src/
+│   ├── components/
+│   │   ├── Breadcrumb.js
+│   │   ├── PokemonCard.js
+│   │   ├── PokemonDetails.js
+│   │   ├── PokemonForm.js
+│   │   └── PokemonList.js
+│   ├── pages/
+│   │   ├── Home.js
+│   │   └── PokemonDetailsPage.js
+│   ├── App.js
+│   ├── index.js
+│   └── ...
+├── package.json
+└── README.md
+Contributing
+We welcome contributions! Please follow these steps to contribute:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Fork the repository.
+Create a new branch (git checkout -b feature-branch).
+Commit your changes (git commit -m 'Add new feature').
+Push to the branch (git push origin feature-branch).
+Open a Pull Request.
+License
+This project is licensed under the MIT License. See the LICENSE file for more details.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Happy Coding! If you have any questions or issues, please feel free to open an issue on the repository.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
