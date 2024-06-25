@@ -9,59 +9,25 @@ const Homepage = () => {
   const [selectedType, setSelectedType] = useState('all');
   const [pokemonList, setPokemonList] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
-  console.log("POKEMONS", pokemons);
 
   useEffect(() => {
-    const fetchData = () => {
-      fetch('https://pokeapi.co/api/v2/type/') // Replace with your actual API endpoint
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-          }
-          return response.json(); // Return the parsed JSON data
-        })
-        .then((responseData) => {
-          setPokemonTypes(responseData.results);
-        });
+    const fetchTypes = async () => {
+      try {
+        const response = await axios.get('https://pokeapi.co/api/v2/type');
+        setPokemonTypes(response.data.results);
+      } catch (error) {
+        console.error('Error fetching types:', error);
+      }
     };
-    fetchData();
+
+    fetchTypes();
   }, []);
 
   useEffect(() => {
-    const fetchPokemon = () => {
-      let url = 'https://pokeapi.co/api/v2/pokemon/?limit=100'; // limit
-      console.log('url 1', url);
-      if (selectedType !== 'all') {
-        url += `&type=${selectedType}`;
-      }
-      console.log('url 2', url);
-
-      fetch(url) // Replace with your actual API endpoint
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-          }
-          return response.json(); // Return the parsed JSON data
-        })
-        .then((responseData) => {
-          console.log('response', responseData);
-
-          setPokemonList(responseData.results);
-        });
-    };
-    fetchPokemon();
-  }, [selectedType]);
-
-
-  
-  const handleTypeChange = async(event) => {
-    // setSelectedType(event.target.value);
-    const type = event.target.value
-
-    if (type) {
+    const fetchAllPokemons = async () => {
       try {
-        const response = await axios.get(`https://pokeapi.co/api/v2/type/${type}`);
-        const pokemonData = response.data.pokemon.map(p => p.pokemon);
+        const response = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=100'); // Adjust the limit as needed
+        const pokemonData = response.data.results;
 
         const pokemonDetails = await Promise.all(pokemonData.map(async (pokemon) => {
           const pokemonResponse = await axios.get(pokemon.url);
@@ -70,24 +36,48 @@ const Homepage = () => {
             image: pokemonResponse.data.sprites.front_default,
           };
         }));
-        console.log("harrr", pokemonData, pokemonDetails)
 
-        
-        // setPokemons(pokemonDetails);
+        setPokemonList(pokemonDetails);
       } catch (error) {
-        console.error('Error fetching Pokémon:', error);
+        console.error('Error fetching all Pokémon:', error);
       }
+    };
+
+    if (selectedType === 'all') {
+      fetchAllPokemons();
     } else {
-      // setPokemons([]);
+      const fetchPokemonsByType = async () => {
+        try {
+          const response = await axios.get(`https://pokeapi.co/api/v2/type/${selectedType}`);
+          const pokemonData = response.data.pokemon.map(p => p.pokemon);
+
+          const pokemonDetails = await Promise.all(pokemonData.map(async (pokemon) => {
+            const pokemonResponse = await axios.get(pokemon.url);
+            return {
+              name: pokemon.name,
+              image: pokemonResponse.data.sprites.front_default,
+            };
+          }));
+
+          setPokemonList(pokemonDetails);
+        } catch (error) {
+          console.error('Error fetching Pokémon by type:', error);
+        }
+      };
+
+      fetchPokemonsByType();
     }
-  
+  }, [selectedType]);
+
+  const handleTypeChange = (event) => {
+    setSelectedType(event.target.value);
   };
 
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value.toLowerCase());
   };
 
-  const filteredPokemon = pokemons.filter((pokemon) =>
+  const filteredPokemon = pokemonList.filter((pokemon) =>
     pokemon.name.toLowerCase().includes(searchTerm)
   );
 
@@ -107,7 +97,7 @@ const Homepage = () => {
                   <option value="all">-- Select an option --</option>
                   {pokemonTypes.map((type) => (
                     <option key={type.name} value={type.name}>
-                      {type.name}
+                      {type.name.charAt(0).toUpperCase() + type.name.slice(1)}
                     </option>
                   ))}
                 </select>
@@ -138,7 +128,6 @@ const Homepage = () => {
             <div className="col-md-8"></div>
           </div>
         </div>
-
       </div>
       <div className="row">
         {filteredPokemon.map((pokemon) => {

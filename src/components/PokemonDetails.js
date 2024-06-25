@@ -23,8 +23,6 @@ const PokemonDetails = () => {
     return false;
   };
 
-  console.log("PALINDROME", palindrome("eevee"));
-
   useEffect(() => {
     axios
       .get(`https://pokeapi.co/api/v2/pokemon/${name}`)
@@ -41,10 +39,6 @@ const PokemonDetails = () => {
       .catch((e) => console.log(e));
   }, []);
 
-  console.log("TYPES", pokemonTypes);
-  console.log("STATS", pokemonStats);
-  console.log("ABILITIES", pokemonAbilities);
-console.log("image",`${pokemon.sprites?.front_shiny}`)
   return (
     <>
     <Navbar /> 
